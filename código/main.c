@@ -20,7 +20,7 @@ int main()
     int usarNovamente;
     TFilaSequencial fila1;
     
-    do{
+    //do{
         fila1=criarFilaSequencial();
         quant=-1;
         formaOrd=-1;
@@ -37,6 +37,9 @@ int main()
         }while(quant==-1);
         
         fila1=criaVetor(&fila1,quant);
+        
+        //imprimirTodosElementos(&fila1);
+        //removerFila(&fila1);
         
         printf("\nOs valores gerados estão sendo exibidos a seguir: \n");
         imprimirTodosElementos(&fila1);
@@ -56,12 +59,15 @@ int main()
         imprimirTodosElementos(&fila1);
         imprimeRelatorioCompMonv(&fila1);
         
-        printf("\nDeseja usar o programa novamente? \n[0] SIM\n[outro valor] NAO\n\n");
-        scanf("%d",&usarNovamente);
+        //printf("\nDeseja usar o programa novamente? \n[0] SIM\n[outro valor] NAO\n\n");
+        //scanf("%d",&usarNovamente);
         
-    }while(usarNovamente==0);
+        //apagarFila(&fila1);
+        
+    //}while(usarNovamente==0);
     
-    printf("\nObrigado por usar!");
+    //printf("\nObrigado por usar!");
+    printf("\nFim do programa!");
     
     return 0;
 }
