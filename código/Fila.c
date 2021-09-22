@@ -1,6 +1,7 @@
 #include "Fila.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include<time.h>
 
 //#define MAX 100000
 
@@ -85,13 +86,24 @@ int escolheQuantValores(){
 
 TFilaSequencial criaVetor(TFilaSequencial *fila, int quant){
     int valor;
+    
+    srand(time(NULL)); //NECESSARIO PARA SEMPRE QUANDO EXECUTAR VIR Ns DIFERENTES
+    
     for (int i=0;i<quant;i++){
-        valor=rand()%(quant*2); //SERÁ INSERIDO NO VETOR UM NUMERO ENTRE 0 E O DOBRO DO N DE POSICOES
+        //valor=rand()%(quant*2); 
+        valor=geraNumero(quant);
         adicionar(fila, valor);
     }
     
     return *fila;
 }
+
+int geraNumero(int quant){
+    int valor=rand()%(quant*2); //SERÁ INSERIDO NO VETOR UM NUMERO ENTRE 0 E O DOBRO DO N DE POSICOES
+    return valor;
+}
+
+
 
 int escolheFormaOrdenecao(){
     int ord;
@@ -110,9 +122,38 @@ int escolheFormaOrdenecao(){
     
 }
 
+//SOBRE ORDENACAO
 TFilaSequencial ordenaVetor(TFilaSequencial *fila, int ord){ //TO DO
+    TFilaSequencial filaOrdenada;
+
+    switch (ord){
+        case 0:
+            filaOrdenada=ordenarCrescente(fila);
+            break;
+        case 1:
+            filaOrdenada=ordenarDecrescente(fila);
+            break;
+        case 2:
+            filaOrdenada=ordenarAleatorio(fila);
+            break;
+    }
+    
+    return filaOrdenada;
+}
+
+TFilaSequencial ordenarCrescente(TFilaSequencial *fila){
     return *fila;
 }
+
+TFilaSequencial ordenarDecrescente(TFilaSequencial *fila){
+    return *fila;
+}
+
+TFilaSequencial ordenarAleatorio(TFilaSequencial *fila){
+    return *fila;
+}
+
+
 
 int imprimeRelatorioCompMonv(TFilaSequencial *fila){
     printf("\nDurante a ordenação desse vetor houveram: \n");
@@ -121,6 +162,12 @@ int imprimeRelatorioCompMonv(TFilaSequencial *fila){
     
 }
 
-
-
+//NAO USADO
+TFilaSequencial apagarFila(TFilaSequencial *fila){
+    for (int i=0;i<=fila->tamanho;i++){
+        removerFila(fila);
+    }
+    
+    return *fila;
+}
 
