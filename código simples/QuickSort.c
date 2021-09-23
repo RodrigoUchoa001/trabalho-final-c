@@ -88,7 +88,8 @@ void ordenaQuickSort(int *vetor,int *nCompMovi){
     nCompMovi[0]=2; //NUMERO DE COMPARACOES
     nCompMovi[1]=3; //NUMERO DE MOVIMENTACOES
     
-    //nComparacoes=2;
-    //nMovimentacoes=3;
+    vetor[0]=123;
+    
+    //return *vetor;
 }
 
