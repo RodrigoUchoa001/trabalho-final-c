@@ -78,10 +78,17 @@ int geraNumero(int quant){
 }
 
 
-int exibeVetor(int *vetor, int tamanho){
+void exibeVetor(int *vetor, int tamanho){
     for (int i=0;i<tamanho;i++){
         printf("posicao %d: %d\n",i,vetor[i]);
     }
 }
 
+void ordenaQuickSort(int *vetor,int *nCompMovi){
+    nCompMovi[0]=2; //NUMERO DE COMPARACOES
+    nCompMovi[1]=3; //NUMERO DE MOVIMENTACOES
+    
+    //nComparacoes=2;
+    //nMovimentacoes=3;
+}
 
