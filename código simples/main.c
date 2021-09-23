@@ -9,12 +9,19 @@ Write your code in this editor and press "Run" button to compile and execute it.
 #include <stdio.h>
 #include "Quicksort.h"
 
+
+
 int main()
 {
-    int quant;
-    int formaOrd;
-    
     int vetor[MAX];
+    
+    /*
+    NESSE VETOR SERAO INSERIDOS O NUMERO DE comparacoes E DE movimentacoes, NESSA ORDEM
+    */
+    int nCompMovi[2]; 
+    
+    int quant; //VAI GUARDAR A quantidade DE VALORES DO VETOR 
+    int formaOrd; //VAI GUARDAR O NUMERO A SER USADO PARA ESCOLHER O TIPO DE ORDENACAO, ANTES DE PASSAR NO QUICKSORT
     
     printf("=== QUICKSORT ===\n");
     
@@ -42,7 +49,18 @@ int main()
     printf("\nOs valores gerados estão sendo exibidos a seguir: \n");
     exibeVetor(vetor,quant);
     
+    //ONDE VAI FICAR A ORDENACAO
+    ordenaQuickSort(vetor,nCompMovi);
+    //
     
+    printf("\nE esse é o vetor depois de ser ordenado: \n");
+    exibeVetor(vetor,quant);
+    
+    printf("\nNessa ordenacao houveram: \n");
+    printf("%d comparacoes e %d movimentacoes",nCompMovi[0],nCompMovi[1]);
 
     return 0;
 }
+
+
+
