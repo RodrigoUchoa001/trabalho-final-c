@@ -84,12 +84,116 @@ void exibeVetor(int *vetor, int tamanho){
     }
 }
 
-void ordenaQuickSort(int *vetor,int *nCompMovi){
-    nCompMovi[0]=2; //NUMERO DE COMPARACOES
-    nCompMovi[1]=3; //NUMERO DE MOVIMENTACOES
+
+void trocaPosicoes(int *vetor, int posi1, int posi2){
+    int aux = vetor[posi1];
+    vetor[posi1] = vetor[posi2];
+    vetor[posi2] = aux;
+}
+
+
+void ordenaQuickSort(int *vetor,int *nCompMovi, int primeiraPosi, int ultimaPosi){
+    if (primeiraPosi<ultimaPosi){
+        int pivo=particiona(vetor,nCompMovi,primeiraPosi,ultimaPosi);
+        
+        ordenaQuickSort(vetor,nCompMovi,primeiraPosi,pivo-1);
+        
+        ordenaQuickSort(vetor,nCompMovi,pivo+1,ultimaPosi);
+    }
+}
+
+
+int particiona(int *vetor,int *nCompMovi, int inicio, int fim){
+    int meio = (inicio + fim) / 2;
+    int a = vetor[inicio];
+    int b = vetor[meio];
+    int c = vetor[fim];
+    int medianaIndice;
     
-    vetor[0]=123;
+    if (a < b) {
+        nCompMovi[0]++;
+        
+        if (b < c) {
+             nCompMovi[0]++;
+            
+            //a < b && b < c
+            medianaIndice = meio;
+        } else {
+             nCompMovi[0]++;
+            
+            if (a < c) {
+                 nCompMovi[0]++;
+                
+                //a < c && c <= b
+                medianaIndice = fim;
+            } else {
+                 nCompMovi[0]++;
+                
+                //c <= a && a < b
+                medianaIndice = inicio;
+            }
+        }
+    } else {
+         nCompMovi[0]++;
+        
+        if (c < b) {
+             nCompMovi[0]++;
+            
+            //c < b && b <= a
+            medianaIndice = meio;
+        } else {
+             nCompMovi[0]++;
+            
+            if (c < a) {
+                 nCompMovi[0]++;
+                
+                //b <= c && c < a
+                medianaIndice = fim;
+            } else {
+                 nCompMovi[0]++;
+                
+                //b <= a && a <= c
+                medianaIndice = inicio;
+            }
+        }
+    }
     
-    //return *vetor;
+    trocaPosicoes(vetor, medianaIndice, fim);
+    nCompMovi[1]++;
+    
+    //*******************ALGORITMO DE PARTIÇÃO DE CORMEN*********************
+    //o pivo é o elemento final
+    int pivo = vetor[fim];
+    int i = inicio - 1;
+    int j;
+    /*
+     * Este laço irá varrer os vetores da esquerda para direira
+     * procurando os elementos que são menores ou iguais ao pivô.
+     * Esses elementos são colocados na partição esquerda.         
+     */
+    for (j = inicio; j <= fim - 1; j++) {
+        if (vetor[j] <= pivo) {
+            i = i + 1;
+            trocaPosicoes(vetor, i, j);
+            
+            nCompMovi[1]++;
+        }
+        nCompMovi[0]++;
+        
+    }
+    //coloca o pivô na posição de ordenação
+    trocaPosicoes(vetor, i + 1, fim);
+    
+    nCompMovi[1]++;
+    
+    return i + 1; //retorna a posição do pivô
+}
+
+
+
+void copiaVetor(int *vetor, int *vetorAnterior, int quant){
+    for (int i=0;i<quant;i++){
+        vetorAnterior[i]=vetor[i];
+    }
 }
 
