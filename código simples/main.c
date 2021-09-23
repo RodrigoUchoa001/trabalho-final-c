@@ -51,13 +51,13 @@ int main()
     copiaVetor(vetor,vetorAnterior,quant);
     
     //ONDE VAI FICAR A ORDENACAO
-    ordenaQuickSort(vetor,nCompMovi);
+    ordenaQuickSort(vetor,nCompMovi,0,quant-1);
     //
     
     int qualVetor;
     int verNovamente;
     
-    printf("\nOrdenação Concluida!");
+    printf("Ordenação Concluida!");
     do{
         printf("Digite qual vetor deseja ver: \n");
         printf("[0] vetor original\n[outro valor] vetor ordenado\n\n");
@@ -71,12 +71,11 @@ int main()
             exibeVetor(vetor,quant);
         }
         
-        printf("\nDeseja ver outro vetor novamente?: \n");
+        printf("Deseja ver outro vetor novamente?: \n");
         printf("[0] SIM\n[outro valor] NAO\n\n");
         scanf("%d",&verNovamente);
         
     }while(verNovamente==0);
-    
     
     //printf("\nE esse é o vetor depois de ser ordenado: \n");
     //exibeVetor(vetor,quant);
