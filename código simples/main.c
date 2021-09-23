@@ -9,8 +9,6 @@ Write your code in this editor and press "Run" button to compile and execute it.
 #include <stdio.h>
 #include "Quicksort.h"
 
-
-
 int main()
 {
     int vetor[MAX];
@@ -36,7 +34,7 @@ int main()
     }while(quant==-1);
     
     do{
-        printf("\n\nAgora escolha a ordem que este vetor será criado: \n");
+        printf("\nAgora escolha a ordem dos valores deste vetor criado: \n");
         printf("[0] ordem crescente\n[1] ordem decrescente\n[2] ordem aleatória \n\n");
             
         formaOrd=escolheFormaOrdenecao();
@@ -57,10 +55,10 @@ int main()
     exibeVetor(vetor,quant);
     
     printf("\nNessa ordenacao houveram: \n");
-    printf("%d comparacoes e %d movimentacoes",nCompMovi[0],nCompMovi[1]);
+    printf("%d comparacoes e %d movimentacoes\n",nCompMovi[0],nCompMovi[1]);
+    
+    printf("\nFim do programa!");
 
     return 0;
 }
-
-
 
