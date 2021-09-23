@@ -6,4 +6,6 @@ void criaVetor(int *vetor, int quant,int formaOrd);
 
 int geraNumero(int quant);
 
-int exibeVetor(int *vetor,int tamanho);
+void exibeVetor(int *vetor,int tamanho);
+
+void ordenaQuickSort(int *vetor, int *nCompMovi);
