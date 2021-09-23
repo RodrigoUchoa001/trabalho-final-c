@@ -12,6 +12,7 @@ Write your code in this editor and press "Run" button to compile and execute it.
 int main()
 {
     int vetor[MAX];
+    int vetorAnterior[MAX];
     
     /*
     NESSE VETOR SERAO INSERIDOS O NUMERO DE comparacoes E DE movimentacoes, NESSA ORDEM
@@ -44,15 +45,41 @@ int main()
     
     criaVetor(vetor,quant,formaOrd);
     
-    printf("\nOs valores gerados estão sendo exibidos a seguir: \n");
-    exibeVetor(vetor,quant);
+    //printf("\nOs valores gerados estão sendo exibidos a seguir: \n");
+    //exibeVetor(vetor,quant);
+    
+    copiaVetor(vetor,vetorAnterior,quant);
     
     //ONDE VAI FICAR A ORDENACAO
     ordenaQuickSort(vetor,nCompMovi);
     //
     
-    printf("\nE esse é o vetor depois de ser ordenado: \n");
-    exibeVetor(vetor,quant);
+    int qualVetor;
+    int verNovamente;
+    
+    printf("\nOrdenação Concluida!");
+    do{
+        printf("Digite qual vetor deseja ver: \n");
+        printf("[0] vetor original\n[outro valor] vetor ordenado\n\n");
+        scanf("%d",&qualVetor);
+        
+        if (qualVetor==0){
+            printf("\nEste é o vetor antes de ser ordenado: \n");
+            exibeVetor(vetorAnterior,quant);
+        }else{
+            printf("\nEste é o vetor apos ser feita a ordenacao: \n");
+            exibeVetor(vetor,quant);
+        }
+        
+        printf("\nDeseja ver outro vetor novamente?: \n");
+        printf("[0] SIM\n[outro valor] NAO\n\n");
+        scanf("%d",&verNovamente);
+        
+    }while(verNovamente==0);
+    
+    
+    //printf("\nE esse é o vetor depois de ser ordenado: \n");
+    //exibeVetor(vetor,quant);
     
     printf("\nNessa ordenacao houveram: \n");
     printf("%d comparacoes e %d movimentacoes\n",nCompMovi[0],nCompMovi[1]);
