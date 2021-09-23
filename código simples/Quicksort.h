@@ -9,3 +9,7 @@ int geraNumero(int quant);
 void exibeVetor(int *vetor,int tamanho);
 
 void ordenaQuickSort(int *vetor, int *nCompMovi);
+
+
+//
+void copiaVetor(int *vetor, int *vetorAnterior, int quant);
