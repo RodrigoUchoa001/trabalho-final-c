@@ -9,8 +9,8 @@ Write your code in this editor and press "Run" button to compile and execute it.
 
 int main()
 {
-    int vetor[MAX];
-    int vetorAnterior[MAX];
+    int vetor[MAX]; //VETOR ONDE VAI SER INSERIDO OS VALORES A SEREM ORDENADOS
+    int vetorAnterior[MAX];  //VETOR QUE TERÁ UMA COPIA DO VETOR ANTERIOR ANTES DE PASSAR PELO PROCESSO DE ORDENACAO
     
     /*
     NESSE VETOR SERAO INSERIDOS O NUMERO DE comparacoes E DE movimentacoes, NESSA ORDEM
@@ -21,7 +21,6 @@ int main()
     int formaOrd; //VAI GUARDAR O NUMERO A SER USADO PARA ESCOLHER O TIPO DE ORDENACAO, ANTES DE PASSAR NO QUICKSORT
     
     printf("=== QUICKSORT ===\n");
-    //printf("%d comparacoes e %d movimentacoes\n",nCompMovi[0],nCompMovi[1]);
     /*
     ESSE DO WHILE VAI GARANTIR QUE O USUARIO SÓ POSSA DIGITAR UM DOS VALORES CORRETOS: 0,1,2 OU 3
     */
@@ -30,7 +29,6 @@ int main()
         printf("[0] 100\n[1] 1.000\n[2] 10.000\n[3] 100.000\n\n");
             
         quant=escolheQuantValores();
-        //printf("%d",quant);
         if (quant==-1) printf("valor invalido digite novamente!\n\n");
             
     }while(quant==-1);
@@ -51,29 +49,22 @@ int main()
     //PREENCHE O VETOR COM AS INFORMACOES DADAS
     criaVetor(vetor,quant,formaOrd);
     
-    //printf("\nOs valores gerados estão sendo exibidos a seguir: \n");
-    //exibeVetor(vetor,quant);
-    
     //FAZ A COPIA DO VETOR PREENCHIDO A CIMA
     copiaVetor(vetor,vetorAnterior,quant);
     
-    //ONDE ACONTECE A ORDENACAO
+    /*
+    ONDE ACONTECE A ORDENACAO
+    OBSERVAÇÃO: O VETOR "nCompMovi" TAMBEM É PASSADO POR PARAMETRO PARA QUE SEJA POSSIVEL
+    FAZER A CONTAGEM DE comparacoes E movimentacoes
+    */
     ordenaQuickSort(vetor,nCompMovi,0,quant-1);
     //
     
-    //VARIAVEIS PARA USO DO PROXIMO DO WHILE
+    //VARIAVEIS PARA USO DO PROXIMO "DO WHILE"
     int qualVetor; //GUARDA QUAL VETOR O USUARIO DESEJA VER, 0 SE O VETOR ORIGINAL, ANTES DE ORDENAR, OU outro valor CASO QUEIRA VER O VETOR ORDENADO
     int verNovamente; //GUARDA A VALOR 0 SE O USUARIO DESEJA VER UM VETOR NOVAMENTE OU outro valor CASO NAO
     
-    
-    // LEMBRAR DE TIRAR ISSO
-    printf("\nNessa ordenacao houveram: \n");
-    printf("%d comparacoes e %d movimentacoes\n",nCompMovi[0],nCompMovi[1]);
-    //
-    
-    
-    
-    printf("Ordenação Concluida!\n");
+    printf("\nOrdenação Concluida!\n");
     do{
         printf("Digite qual vetor deseja ver: \n");
         printf("[0] vetor original\n[outro valor] vetor ordenado\n\n");
@@ -87,15 +78,11 @@ int main()
             exibeVetor(vetor,quant);
         }
         
-        printf("Deseja ver outro vetor novamente?: \n");
+        printf("Deseja ver outro vetor novamente? \n");
         printf("[0] SIM\n[outro valor] NAO\n\n");
         scanf("%d",&verNovamente);
         
     }while(verNovamente==0);
-    
-    //printf("\nE esse é o vetor depois de ser ordenado: \n");
-    //exibeVetor(vetor,quant);
-    
     
     //APOS O USUARIO NÃO QUERER MAIS VER UM DOS VETORES É EXIBIDO O NUMERO DE comparacoes E movimentacoes
     printf("\nNessa ordenacao houveram: \n");
