@@ -5,7 +5,8 @@
 
 /*
 RECEBE UM VALOR DIGITADO PELO USUARIO DE ACORDO COM A MENSAGEM DO MAIN
-E RETORNA O NUMERO DE POSICOES ESCOLHIDO
+E RETORNA O NUMERO DE POSICOES ESCOLHIDO CASO ELE SEJA UM VALOR VALIDO 
+(0, 1, 2 OU 3)
 */
 int escolheQuantValores(){  
     int quant;
@@ -63,7 +64,6 @@ void criaVetor(int *vetor, int quant,int formaOrd){
             }
             break;
         case 1: //DECRESCENTE
-             //
             for (int i=quant;i>0;i--){
                 vetor[posicao]=i;
                 posicao++;
@@ -73,7 +73,7 @@ void criaVetor(int *vetor, int quant,int formaOrd){
             srand(time(NULL)); //NECESSARIO PARA SEMPRE QUANDO EXECUTAR VIR Ns DIFERENTES
             
             for (int i=0;i<quant;i++){
-                valor=geraNumero(quant);
+                valor=geraNumero(quant); //GERA UM NUMERO E INSERE NO VETOR
                 vetor[i]=valor;
             }
     }
@@ -85,7 +85,7 @@ GERA UM NUMERO ALEATORIO E RETORNA PARA SER INSERIDO NO VETOR
 ESSE METODO É USADO NO CASO DO USUARIO ESCOLHER UM VETOR COM VALORES ALEATORIOS
 */
 int geraNumero(int quant){
-    int valor=rand()%(quant*2); //SERÁ INSERIDO NO VETOR UM NUMERO ENTRE 0 E O DOBRO DO N DE POSICOES
+    int valor=rand()%(quant*2); //SERÁ GERADO UM NUMERO ENTRE 0 E O DOBRO DO NUMERO DE POSICOES
     return valor;
 }
 
@@ -153,6 +153,9 @@ int particiona(int *vetor,int *nCompMovi, int primeiraPosi, int ultimaPosi){
     
     IMPORTANTE: AQUI COMECA A CONTAGEM DE COMPARACOES E MOVIMENTACOES ENTRE OS VALORES
     
+    O VETOR "nCompMovi" QUE SERÁ USADO A SEGUIR É O VETOR QUE IRÁ GUARDAR O NUMERO DE
+    comparacoes E DE movimentacoes, NESSA ORDEM
+    
     -SEMPRE QUE HOUVER UM "nCompMovi[0]++;" SIGNIFICA QUE ESTÁ SENDO INCREMENTADO O NUMERO
     DE COMPARACOES (AS COMPARACOES PARA ESCOLHA DA MEDIANA TAMBEM ESTAO SENDO CONTADAS)
     -SEMPRE QUE HOUVER UM "nCompMovi[1]++;" SIGNIFICA QUE ESTÁ SENDO INCREMENTADO O NUMERO
@@ -208,7 +211,7 @@ int particiona(int *vetor,int *nCompMovi, int primeiraPosi, int ultimaPosi){
     
     /*
     APOS ESCOLHIDA O MEDIANA ELA TROCA DE POSICAO COM O VALOR DA ULTIMA POSICAO, 
-    POIS USAMOS AQUI O MÉTODO DE CORMEN, ONDE O O PIVO ESCOLHIDO É SEMPRE O ELEMENTO
+    POIS USAMOS AQUI O "MÉTODO DE CORMEN", ONDE O O PIVO ESCOLHIDO É SEMPRE O ELEMENTO
     QUE ESTÁ NA ULTIMA POSICAO
     */
     trocaPosicoes(vetor, posiMediana, ultimaPosi);
@@ -229,7 +232,10 @@ int particiona(int *vetor,int *nCompMovi, int primeiraPosi, int ultimaPosi){
         TESTA SE AQUELE ELEMENTO É MENOR QUE O PIVO, CASO SEJA ELE É TROCADO DE
         POSICAO COM O VALOR QUE ESTÁ NA POSICAO i, NA ESQUERDA, E, APOS ISSO, 
         i É INCREMENTADO, PARA QUANDO FOR NECESSARIO UMA NOVA TROCA DE POSICOES,
-        O i APONTE PARA A POSICAO QUE ESTÁ DEPOIS DA ULTIMA EM Q HOUVE TROCA
+        O i APONTE PARA A POSICAO QUE ESTÁ DEPOIS DA ULTIMA EM Q HOUVE TROCA.
+        
+        APOS ISSO, TODOS OS ELEMENTOS MENORES QUE O PIVO ESTARAM DO LADO ESQUERDO
+        DO VETOR
         */
         if (vetor[j] <= pivo) {
             i++;
@@ -244,6 +250,10 @@ int particiona(int *vetor,int *nCompMovi, int primeiraPosi, int ultimaPosi){
     /*
     APOS PERCORRER O VETOR, O PIVO É TROCADO DE POSICAO COM O VALOR QUE ESTÁ NA 
     POSICAO DEPOIS DA ULTIMA EM QUE HOUVE TROCA
+    
+    E, APOS ISSO, OS ELEMENTOS DO VETOR ESTARAO DISTRIBUIDOS DE FORMA QUE OS 
+    ELEMENTOS A ESQUERDA DO PIVO SAO MENORES QUE ELE, E OS ELEMENTOS A DIREITA
+    DO PIVO SAO MAIORES QUE ELE
     */
     trocaPosicoes(vetor, i + 1, ultimaPosi);
     
