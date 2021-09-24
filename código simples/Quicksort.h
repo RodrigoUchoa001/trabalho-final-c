@@ -6,7 +6,7 @@ int escolheFormaOrdenecao();
 void criaVetor(int *vetor, int quant,int formaOrd);
 int geraNumero(int quant);
 
-//METODOS DE EXIBICAO DO VETOR
+//METODO DE EXIBICAO DO VETOR
 void exibeVetor(int *vetor,int tamanho);
 
 //METODOS DE ORDENACAO DO VETOR
