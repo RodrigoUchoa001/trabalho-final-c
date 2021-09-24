@@ -53,8 +53,8 @@ int escolheFormaOrdenecao(){
 ONDE É CRIADO O VETOR COM AS INFORMAÇOES ESCOLHIDAS
 */
 void criaVetor(int *vetor, int quant,int formaOrd){
-    int valor; //VAI SER USADO NO CASO DE ALEATORIO
-    int posicao=0; //VAI SER USADO NO CASO DE DECRESCENTE
+    int valor; //VAI SER USADO NO CASO DE VETOR ALEATORIO
+    int posicao=0; //VAI SER USADO NO CASO DE VETOR DECRESCENTE
     
     switch (formaOrd){
         case 0: //CRESCENTE
@@ -70,7 +70,6 @@ void criaVetor(int *vetor, int quant,int formaOrd){
             }
             break;
         case 2: //ALEATORIO
-            
             srand(time(NULL)); //NECESSARIO PARA SEMPRE QUANDO EXECUTAR VIR Ns DIFERENTES
             
             for (int i=0;i<quant;i++){
@@ -224,7 +223,7 @@ int particiona(int *vetor,int *nCompMovi, int primeiraPosi, int ultimaPosi){
     VINDA NO PARAMETRO, SEJA O VETOR INTEIRO OU SÓ PARTE DELE, CASO SEJA O MOMENTO EM QUE O 
     METODO SEJA CHAMADO RECURSIVAMENTE
     */
-    for (int j = primeiraPosi; j <= ultimaPosi - 1; j++) { 
+    for (int j = primeiraPosi; j < ultimaPosi; j++) { 
         
         /*
         TESTA SE AQUELE ELEMENTO É MENOR QUE O PIVO, CASO SEJA ELE É TROCADO DE
@@ -233,7 +232,7 @@ int particiona(int *vetor,int *nCompMovi, int primeiraPosi, int ultimaPosi){
         O i APONTE PARA A POSICAO QUE ESTÁ DEPOIS DA ULTIMA EM Q HOUVE TROCA
         */
         if (vetor[j] <= pivo) {
-            i = i + 1;
+            i++;
             trocaPosicoes(vetor, i, j);
             
             nCompMovi[1]++;
