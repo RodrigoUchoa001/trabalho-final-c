@@ -21,7 +21,7 @@ int main()
     int formaOrd; //VAI GUARDAR O NUMERO A SER USADO PARA ESCOLHER O TIPO DE ORDENACAO, ANTES DE PASSAR NO QUICKSORT
     
     printf("=== QUICKSORT ===\n");
-    printf("%d comparacoes e %d movimentacoes\n",nCompMovi[0],nCompMovi[1]);
+    //printf("%d comparacoes e %d movimentacoes\n",nCompMovi[0],nCompMovi[1]);
     /*
     ESSE DO WHILE VAI GARANTIR QUE O USUARIO SÓ POSSA DIGITAR UM DOS VALORES CORRETOS: 0,1,2 OU 3
     */
@@ -62,7 +62,7 @@ int main()
     //
     
     //VARIAVEIS PARA USO DO PROXIMO DO WHILE
-    int qualVetor; //GUARDA QUAL VETOR O USUARIO DESEJA VER
+    int qualVetor; //GUARDA QUAL VETOR O USUARIO DESEJA VER, 0 SE O VETOR ORIGINAL, ANTES DE ORDENAR, OU outro valor CASO QUEIRA VER O VETOR ORDENADO
     int verNovamente; //GUARDA A VALOR 0 SE O USUARIO DESEJA VER UM VETOR NOVAMENTE OU outro valor CASO NAO
     
     
